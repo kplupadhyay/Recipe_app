@@ -5,7 +5,7 @@ import { userRouter } from "./routes/users.js";
 import { recipesRouter } from "./routes/recipes.js";
 
 const app = express();
-
+// const MONGO_URL = process.env.MONGO_URL
 app.use(express.json());
 app.use(cors());
 
