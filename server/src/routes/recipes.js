@@ -42,4 +42,30 @@ router.put("/" , async (req,res)=>{
 })
 
 
+router.get("/savedRecipes/ids/:userId", async (req, res) => {
+    try {
+      const user = await userModel.findById(req.params.userId);
+      res.status(201).json({ savedRecipes: user?.savedRecipes });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+  
+  // Get saved recipes
+  router.get("/savedRecipes/:userId", async (req, res) => {
+    try {
+      const user = await userModel.findById(req.params.userId);
+      const savedRecipes = await RecipeModel.find({
+        _id: { $in: user.savedRecipes },
+      });
+  
+      console.log(savedRecipes);
+      res.status(201).json({ savedRecipes });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
 export {router as recipesRouter}
