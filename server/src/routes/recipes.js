@@ -27,7 +27,6 @@ router.post("/" , async (req,res)=>{
 
 
 router.put("/" , async (req,res)=>{
-    // {userID , recipeID};
    
     try{
         const recipe = await RecipeModel.findById(req.body.recipeID)
@@ -60,7 +59,7 @@ router.get("/savedRecipes/ids/:userId", async (req, res) => {
         _id: { $in: user.savedRecipes },
       });
   
-      console.log(savedRecipes);
+      // console.log(savedRecipes);
       res.status(201).json({ savedRecipes });
     } catch (err) {
       console.log(err);

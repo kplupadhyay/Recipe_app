@@ -5,6 +5,21 @@ import { userModel } from "../Models/User.js";
 
 const router = express.Router();
 
+
+// export const verifyToken = (req, res, next) => {
+//     const authHeader = req.headers.authorization;
+//     if (authHeader) {
+//       jwt.verify(authHeader, "secret", (err) => {
+//         if (err) {
+//           return res.sendStatus(403);
+//         }
+//         next();
+//       });
+//     } else {
+//       res.sendStatus(401);
+//     }
+//   };
+
 router.post("/register" , async (req,res)=>{
     const {name , password} = req.body;
 
@@ -42,3 +57,5 @@ router.post("/login" , async (req,res)=>{
     res.json({token , userID:user._id})
 })
 export {router as userRouter};
+
+
